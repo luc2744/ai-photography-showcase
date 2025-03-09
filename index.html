@@ -8,6 +8,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 初始化 AOS 动画
+        AOS.init();
+
+        // 主题切换功能
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // 从 localStorage 加载主题设置
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            body.classList.add('dark-theme');
+            themeToggle.textContent = '☀️'; // 太阳图标
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙'; // 月亮图标
+            } else {
+                body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️'; // 太阳图标
+            }
+        });
+
+        // 监听系统主题变化
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    body.classList.add('dark-theme');
+                    themeToggle.textContent = '☀️';
+                } else {
+                    body.classList.remove('dark-theme');
+                    themeToggle.textContent = '🌙';
+                }
+            }
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -19,6 +60,7 @@
                 <li><a href="#creative">创意应用</a></li>
                 <li><a href="#pro">专业辅助</a></li>
                 <li><a href="#trends">新兴趋势</a></li>
+                <li><button id="theme-toggle" class="theme-toggle">🌙</button></li>
             </ul>
         </div>
     </nav>

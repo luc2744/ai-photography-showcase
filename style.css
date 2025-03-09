@@ -8,6 +8,61 @@
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
     --card-shadow: rgba(124, 58, 237, 0.1);
+
+    /* 暗色主题变量 */
+    --dark-primary: #9D5CF5;
+    --dark-secondary: #60A5FA;
+    --dark-accent: #34D399;
+    --dark-bg: #111827;
+    --dark-surface: #1F2937;
+    --dark-border: rgba(255, 255, 255, 0.1);
+    --dark-card-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* 暗色主题样式 */
+.dark-theme {
+    background-color: var(--dark-bg);
+    color: #E5E7EB;
+}
+
+.dark-theme .navbar {
+    background: var(--dark-surface);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dark-theme .logo {
+    color: var(--dark-primary);
+}
+
+.dark-theme .nav-links a {
+    color: #E5E7EB;
+}
+
+.dark-theme .nav-links a:hover {
+    color: var(--dark-primary);
+}
+
+.dark-theme .hero {
+    background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary), var(--dark-accent));
+}
+
+.dark-theme .section h2 {
+    color: #E5E7EB;
+}
+
+.dark-theme .bg-light {
+    background-color: var(--dark-surface);
+}
+
+.dark-theme .feature-card {
+    background: rgba(31, 41, 55, 0.95);
+    border-color: var(--dark-border);
+    box-shadow: 0 8px 32px var(--dark-card-shadow);
+}
+
+.dark-theme .feature-card:hover {
+    border-color: var(--dark-primary);
+    box-shadow: 0 20px 40px var(--dark-card-shadow);
 }
 
 * {
@@ -66,6 +121,25 @@ body {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* 主题切换按钮样式 */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.dark-theme .theme-toggle {
+    color: #E5E7EB;
 }
 
 /* Hero Section */
